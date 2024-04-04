@@ -15,5 +15,7 @@ LeftFrame.pack(side=LEFT)
 LeftFrame = Frame(jan, width=395, height=300, bg="MIDNIGHTBLUE", relief="raised")
 LeftFrame.pack(side=RIGHT)
 
+LogoFram = Label(LeftFrame, Logo=)
+
 
 jan.mainloop()
