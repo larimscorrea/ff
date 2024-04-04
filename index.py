@@ -8,12 +8,12 @@ jan.geometry("600x300")
 jan.configure(background="white")
 jan.resizable(width=False, height=False)
 
-logo = PhotoImage(file="/icons/Heaven_system-icon.png")
+logo = PhotoImage(file="icons/icon.png")
 
 LeftFrame = Frame(jan, width=200, height=300, bg="MIDNIGHTBLUE", relief="raised")
 LeftFrame.pack(side=LEFT)
 
-LeftFrame = Frame(jan, width=395, height=300, bg="MIDNIGHTBLUE", relief="raised")
+RightFrame = Frame(jan, width=395, height=300, bg="MIDNIGHTBLUE", relief="raised")
 LeftFrame.pack(side=RIGHT)
 
 LogoLabel = Label(LeftFrame, image=logo, bg="MIDNIGHTBLUE")
@@ -29,6 +29,6 @@ PassLabel = Label(RightFrame, text="Password: ", font=("Century Gothic", 20), bg
 PassLabel.place(x=5, y=150)
 
 PassEntry = ttk.Entry(RightFrame, width=30)
-PassEntry.place(x=150, y=210)
+PassEntry.place(x=150, y=160)
 
 jan.mainloop()
