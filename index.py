@@ -9,12 +9,13 @@ jan.configure(background="white")
 jan.resizable(width=False, height=False)
 
 logo = PhotoImage(file="icons/icon.png")
+logo = Frame(width=100, height=100)
 
 LeftFrame = Frame(jan, width=200, height=300, bg="MIDNIGHTBLUE", relief="raised")
 LeftFrame.pack(side=LEFT)
 
 RightFrame = Frame(jan, width=395, height=300, bg="MIDNIGHTBLUE", relief="raised")
-LeftFrame.pack(side=RIGHT)
+RightFrame.pack(side=RIGHT)
 
 LogoLabel = Label(LeftFrame, image=logo, bg="MIDNIGHTBLUE")
 LogoLabel.place(x=50, y=100)
