@@ -1,16 +1,16 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
+import database
 
 jan = Tk()
-jan.title = "System - Acess Panel"
+jan.title("System - Acess Panel")
 jan.geometry("600x300")
 jan.configure(background="white")
 jan.resizable(width=False, height=False)
 jan.attributes("-alpha", 0.9)
 
 logo = PhotoImage(file="icons/icon.png")
-#logo = Frame(width=100, height=100)
 
 LeftFrame = Frame(jan, width=200, height=300, bg="MIDNIGHTBLUE", relief="raised")
 LeftFrame.pack(side=LEFT)
@@ -47,10 +47,10 @@ def Register():
     NameEntry.place(x=100, y=16)
 
     EmailLabel = Label(RightFrame, text="E-mail: ", font=("Century Gothic", 20), bg="MIDNIGHTBLUE", fg="white")
-    EmailLabel.place(x=100, y=66)
+    EmailLabel.place(x=5, y=50)
 
     EmailEntry = Entry(RightFrame, width=39)
-    EmailEntry.place(x=100, y=16)
+    EmailEntry.place(x=100, y=60)
     
     Register = ttk.Button(RightFrame, text="Register", width=30)
     Register.place(x=100, y=225)
