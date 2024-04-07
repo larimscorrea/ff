@@ -58,12 +58,12 @@ def Register():
         User = UserEntry.get()
         Pass = PassEntry.get()
         database.cursor.execute("""
-        INSERT INTO Users(Name, Email, User, Password) VALUES (?, ?, ?)
-        """, (Name, Email, User, Pass))
+        INSERT INTO Users(Name, Email, User, Password) VALUES (?, ?, ?, ?)
+        """, (Name, Email, User, Pass))  
         database.conn.commit()
         messagebox.showinfo(title="Register Info", message="Conta criada com sucesso")
 
-    Register = ttk.Button(RightFrame, text="Register", width=30, command="RegisterToDataBase")
+    Register = ttk.Button(RightFrame, text="Register", width=30, command=RegisterToDataBase)  
     Register.place(x=100, y=225)
 
     def BackToLogin():
