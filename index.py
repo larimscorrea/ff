@@ -57,11 +57,15 @@ def Register():
         Email = EmailEntry.get()
         User = UserEntry.get()
         Pass = PassEntry.get()
-        database.cursor.execute("""
-        INSERT INTO Users(Name, Email, User, Password) VALUES (?, ?, ?, ?)
-        """, (Name, Email, User, Pass))  
-        database.conn.commit()
-        messagebox.showinfo(title="Register Info", message="Conta criada com sucesso")
+
+        if (Name == "" and Email == "" and User == "" and Pass == ""):
+            messagebox.showerror(title="Register Error", message="Não deixe nenhum campo vazio. Preencha todos os campos.")
+        else: 
+            database.cursor.execute("""
+            INSERT INTO Users(Name, Email, User, Password) VALUES (?, ?, ?, ?)
+            """, (Name, Email, User, Pass))  
+            database.conn.commit()
+            messagebox.showinfo(title="Register Info", message="Conta criada com sucesso")
 
     Register = ttk.Button(RightFrame, text="Register", width=30, command=RegisterToDataBase)  
     Register.place(x=100, y=225)
