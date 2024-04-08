@@ -12,22 +12,22 @@ jan.attributes("-alpha", 0.9)
 
 logo = PhotoImage(file="icons/icon.png")
 
-LeftFrame = Frame(jan, width=200, height=300, bg="MIDNIGHTBLUE", relief="raised")
+LeftFrame = Frame(jan, width=200, height=300, bg="#FFD700", relief="raised")
 LeftFrame.pack(side=LEFT)
 
-RightFrame = Frame(jan, width=395, height=300, bg="MIDNIGHTBLUE", relief="raised")
+RightFrame = Frame(jan, width=395, height=300, bg="#FFD700", relief="raised")
 RightFrame.pack(side=RIGHT)
 
-LogoLabel = Label(LeftFrame, image=logo, bg="MIDNIGHTBLUE")
+LogoLabel = Label(LeftFrame, image=logo, bg="#FFD700")
 LogoLabel.place(x=50, y=100)
 
-UserLabel = Label(RightFrame, text="Username: ", font=("Century Gothic", 20), bg="MIDNIGHTBLUE", fg="white")
+UserLabel = Label(RightFrame, text="Username: ", font=("Century Gothic", 20), bg="#FFD700", fg="white")
 UserLabel.place(x=5, y=100)
 
 UserEntry = ttk.Entry(RightFrame, width=30)
 UserEntry.place(x=150, y=110)
 
-PassLabel = Label(RightFrame, text="Password: ", font=("Century Gothic", 20), bg="MIDNIGHTBLUE", fg="white")
+PassLabel = Label(RightFrame, text="Password: ", font=("Century Gothic", 20), bg="#FFD700", fg="white")
 PassLabel.place(x=5, y=150)
 
 PassEntry = ttk.Entry(RightFrame, width=30, show="*")
@@ -42,29 +42,29 @@ def Login():
     WHERE (User = ? and Password = ?)
     """, (User, Pass))
 
-    VerifyLogin = database.cursor.fetchall()
-    try:
-        if (User in VerifyLogin and Pass in VerifyLogin):
-            messagebox.showinfo(title="Login Info", message="Acesso confirmado. Bem vindo!")
+    VerifyLogin = database.cursor.fetchone()
+    
 
-    except:
-        messagebox.showinfo(title="Login Info", message="Acesso negado. Verifique se está cadastrado no sistema!")
+    if VerifyLogin:  # Verifica se VerifyLogin não é None
+        messagebox.showinfo(title="Login Info", message="Acesso confirmado. Bem vindo!")
+    else:
+        messagebox.showerror(title="Login Info", message="Acesso negado. Verifique se está cadastrado no sistema!")
 
-
-LoginButton = ttk.Button(RightFrame, text="Login", width=30)
+LoginButton = ttk.Button(RightFrame, text="Login", width=30, command=Login)  # Corrigindo o comando para chamar a função Login
 LoginButton.place(x=100, y=200)
+
 
 def Register():
     LoginButton.place(x=5000)
     RegisterButton.place(x=5000)
 
-    NameLabel = Label(RightFrame, text="Name: ", font=("Century Gothic", 20), bg="MIDNIGHTBLUE", fg="white")
+    NameLabel = Label(RightFrame, text="Name: ", font=("Century Gothic", 20), bg="#FFD700", fg="white")
     NameLabel.place(x=5, y=5)
 
     NameEntry = Entry(RightFrame, width=39)
     NameEntry.place(x=100, y=16)
 
-    EmailLabel = Label(RightFrame, text="E-mail: ", font=("Century Gothic", 20), bg="MIDNIGHTBLUE", fg="white")
+    EmailLabel = Label(RightFrame, text="E-mail: ", font=("Century Gothic", 20), bg="#FFD700", fg="white")
     EmailLabel.place(x=5, y=50)
 
     EmailEntry = Entry(RightFrame, width=39)
