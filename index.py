@@ -33,6 +33,23 @@ PassLabel.place(x=5, y=150)
 PassEntry = ttk.Entry(RightFrame, width=30)
 PassEntry.place(x=150, y=160)
 
+def Login():
+    User = UserEntry.get()
+    Pass = PassEntry.get()
+
+    database.cursor.execute(""" 
+    SELECT * FROM Users
+    WHERE (User = ? and Password = ?)
+    """, (User, Pass))
+
+    VerifyLogin = database.cursor.fetchall()
+    try:
+        if (User in VerifyLogin and Pass in VerifyLogin):
+            messagebox.showinfo(title="Login Info", message="Acesso confirmado. Bem vindo!")
+
+    except:
+        messagebox.showinfo(title="Login Info", message="Acesso negado. Verifique se está cadastrado no sistema!")
+
 LoginButton = ttk.Button(RightFrame, text="Login", width=30)
 LoginButton.place(x=100, y=200)
 
