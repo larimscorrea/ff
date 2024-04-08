@@ -30,7 +30,7 @@ UserEntry.place(x=150, y=110)
 PassLabel = Label(RightFrame, text="Password: ", font=("Century Gothic", 20), bg="MIDNIGHTBLUE", fg="white")
 PassLabel.place(x=5, y=150)
 
-PassEntry = ttk.Entry(RightFrame, width=30)
+PassEntry = ttk.Entry(RightFrame, width=30, show="*")
 PassEntry.place(x=150, y=160)
 
 def Login():
@@ -49,6 +49,7 @@ def Login():
 
     except:
         messagebox.showinfo(title="Login Info", message="Acesso negado. Verifique se está cadastrado no sistema!")
+
 
 LoginButton = ttk.Button(RightFrame, text="Login", width=30)
 LoginButton.place(x=100, y=200)
@@ -75,9 +76,10 @@ def Register():
         User = UserEntry.get()
         Pass = PassEntry.get()
 
-        if (Name == "" and Email == "" and User == "" and Pass == ""):
+        if (Name == "" or Email == "" or User == "" or Pass == ""):
             messagebox.showerror(title="Register Error", message="Não deixe nenhum campo vazio. Preencha todos os campos.")
-        else: 
+            return
+        else:
             database.cursor.execute("""
             INSERT INTO Users(Name, Email, User, Password) VALUES (?, ?, ?, ?)
             """, (Name, Email, User, Pass))  
